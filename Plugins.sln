@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemeEffectsPlugin", "MemeEffectsPlugin\MemeEffectsPlugin.csproj", "{EE267973-E5CB-4BE0-8750-EC2900A79A1C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonMessagesPlugin", "CommonEffectsPlugin\CommonMessagesPlugin.csproj", "{287C71AC-F40E-48BA-9664-EFC3F7515F8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE267973-E5CB-4BE0-8750-EC2900A79A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE267973-E5CB-4BE0-8750-EC2900A79A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE267973-E5CB-4BE0-8750-EC2900A79A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE267973-E5CB-4BE0-8750-EC2900A79A1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{287C71AC-F40E-48BA-9664-EFC3F7515F8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{287C71AC-F40E-48BA-9664-EFC3F7515F8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{287C71AC-F40E-48BA-9664-EFC3F7515F8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{287C71AC-F40E-48BA-9664-EFC3F7515F8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04BD6E03-1575-4AE2-9321-28B861EC2D73}
+	EndGlobalSection
+EndGlobal
