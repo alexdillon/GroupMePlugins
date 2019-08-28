@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GroupMeClientApi" Version="0.0.2" />
     <PackageReference Include="GroupMeClientPlugin" Version="1.0.1" />
   </ItemGroup>
 
