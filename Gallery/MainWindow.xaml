@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gallery"
         mc:Ignorable="d"
-        Title="Image Gallery" Height="800" Width="1024">
+        Title="Image Gallery" Height="800" Width="1024" Closing="Window_Closing">
         <WebBrowser Grid.Row="1"
                     HorizontalAlignment="Stretch"  
                     VerticalAlignment="Stretch"

@@ -1,4 +1,5 @@
 ﻿using GroupMeClientApi.Models;
+using GroupMeClientPlugin.GroupChat;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -13,9 +14,9 @@ namespace Gallery
 
         public override string PluginVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-        public Task Activated(IMessageContainer groupOrChat, IQueryable<Message> cachedMessages)
+        public Task Activated(IMessageContainer groupOrChat, IQueryable<Message> cachedMessages, ICachePluginUIIntegration integration)
         {
-            MainWindow mainWindow = new MainWindow(groupOrChat, cachedMessages);
+            MainWindow mainWindow = new MainWindow(groupOrChat, cachedMessages, integration);
 
             System.Windows.Application.Current.Dispatcher.Invoke(() =>
             {

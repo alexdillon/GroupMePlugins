@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using GroupMeClientApi.Models;
 using GroupMeClientApi.Models.Attachments;
+using GroupMeClientPlugin.GroupChat;
 
 namespace Gallery
 {
@@ -18,12 +19,13 @@ namespace Gallery
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(IMessageContainer groupChat, IQueryable<Message> cachedMessages)
+        public MainWindow(IMessageContainer groupChat, IQueryable<Message> cachedMessages, ICachePluginUIIntegration uiIntegration)
         {
             InitializeComponent();
 
             this.GroupChat = groupChat;
             this.CachedMessages = cachedMessages;
+            this.UIIntegration = uiIntegration;
 
             this.MessagesWithAttachments =
                 this.CachedMessages
@@ -39,7 +41,12 @@ namespace Gallery
 
             Debug.WriteLine($"http://+:80/Temporary_Listen_Addresses/{this.ServerId}/");
 
+            this.ScriptingHelper = new ObjectForScriptingHelper(this);
+            this.webBrowser.ObjectForScripting = this.ScriptingHelper;
+
             this.webBrowser.Navigate($"http://127.0.0.1:80/Temporary_Listen_Addresses/{this.ServerId}/gallery.html");
+
+            this.Title = $"Image Gallery for {this.GroupChat.Name}";
         }
 
         private IMessageContainer GroupChat { get; }
@@ -48,6 +55,10 @@ namespace Gallery
 
         private IQueryable<Message> MessagesWithAttachments { get; }
 
+        private ICachePluginUIIntegration UIIntegration { get; }
+
+        private ObjectForScriptingHelper ScriptingHelper { get; }
+
         private int ImagesPerPage { get; } = 25;
 
         private string ServerId { get; } = Guid.NewGuid().ToString();
@@ -55,6 +66,23 @@ namespace Gallery
         private HttpListener HttpListener { get; }
 
         private CancellationTokenSource CancellationTokenSource { get; }
+
+        public void OpenContextView(string id)
+        {
+            var message = this.MessagesWithAttachments.FirstOrDefault(m => m.Id == id);
+
+            if (message == null)
+            {
+                return;
+            }
+
+            this.UIIntegration.GotoContextView(message, this.GroupChat);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                Application.Current.MainWindow.Activate();
+            });
+        }
 
         private async Task RunServer()
         {
@@ -201,7 +229,8 @@ namespace Gallery
             file = file.Replace("{DATE}", message.CreatedAtTime.ToString());
             file = file.Replace("{AVATARURL}", $"{message.AvatarUrl}.avatar");
             file = file.Replace("{MESSAGE}", message.Text);
-            file = file.Replace("{LIKERS}", likersList.ToString());
+            file = file.Replace("{ID}", message.Id);
+            //file = file.Replace("{LIKERS}", likersList.ToString());
 
             file = file.Replace("{IMAGE}", imageUrl);
 
@@ -237,6 +266,18 @@ namespace Gallery
             }
 
             return imageUrl;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.CancellationTokenSource.Cancel();
+            try
+            {
+                this.HttpListener.Stop();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }
