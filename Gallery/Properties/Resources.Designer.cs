@@ -90,6 +90,21 @@ namespace Gallery.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to /*!
+        /// * imagesLoaded PACKAGED v4.1.4
+        /// * JavaScript is all like &quot;You images are done yet or what?&quot;
+        /// * MIT License
+        /// */
+        ///
+        ///!function(e,t){&quot;function&quot;==typeof define&amp;&amp;define.amd?define(&quot;ev-emitter/ev-emitter&quot;,t):&quot;object&quot;==typeof module&amp;&amp;module.exports?module.exports=t():e.EvEmitter=t()}(&quot;undefined&quot;!=typeof window?window:this,function(){function e(){}var t=e.prototype;return t.on=function(e,t){if(e&amp;&amp;t){var i=this._events=this._events||{},n=i[e]=i[e]||[];return n.indexOf(t)==-1&amp;&amp;n.push(t),this}},t.once=function(e,t){ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string imagesloaded_pkgd_min {
+            get {
+                return ResourceManager.GetString("imagesloaded_pkgd_min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /*!
         /// * Infinite Scroll PACKAGED v3.0.6
         /// * Automatically add next page
         /// *
@@ -119,6 +134,54 @@ namespace Gallery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to /*!
+        /// * Masonry PACKAGED v3.3.2
+        /// * Cascading grid layout library
+        /// * http://masonry.desandro.com
+        /// * MIT License
+        /// * by David DeSandro
+        /// */
+        ///
+        ///!function(a){function b(){}function c(a){function c(b){b.prototype.option||(b.prototype.option=function(b){a.isPlainObject(b)&amp;&amp;(this.options=a.extend(!0,this.options,b))})}function e(b,c){a.fn[b]=function(e){if(&quot;string&quot;==typeof e){for(var g=d.call(arguments,1),h=0,i=this.length;i&gt;h;h++){var j=this[h],k=a.data(j,b);if(k)if(a.isFunction(k[e])&amp;&amp;&quot;_&quot;!==e.charAt(0)){var l=k[e].ap [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string masonry_pkgd_min {
+            get {
+                return ResourceManager.GetString("masonry_pkgd_min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=windows-1252&quot;&gt;
+        ///    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+        ///
+        ///    &lt;!--Style for Gallery--&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: sans-serif;
+        ///            line-height: 1.4;
+        ///            font-size: 18px;
+        ///            padding: 20px;
+        ///            margin: 0 auto;
+        ///            background: black;
+        ///        }
+        ///
+        ///        .grid-sizer {
+        ///			width: 24%;
+        ///		}
+        ///
+        ///        .floatImage {
+        ///			float: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string moderngallery {
+            get {
+                return ResourceManager.GetString("moderngallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;div class=&quot;topbar&quot;&gt;
         ///    &lt;table&gt;
         ///        &lt;tr&gt;
@@ -130,17 +193,12 @@ namespace Gallery.Properties {
         ///
         ///            &lt;td&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
         ///            &lt;td style=&quot;color: white;&quot;&gt;{MESSAGE}&lt;/td&gt;
-        ///
+        ///            &lt;!--
+        ///    &lt;td&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+        ///    &lt;td&gt;{LIKERS}&lt;/td&gt;
+        ///    --&gt;
         ///            &lt;td&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
-        ///            &lt;td&gt;{LIKERS}&lt;/td&gt;
-        ///        &lt;/tr&gt;
-        ///    &lt;/table&gt;
-        ///
-        ///&lt;/div&gt;
-        ///
-        ///&lt;div class=&quot;mainblock&quot;&gt;
-        ///    &lt;img class=&quot;gm-image&quot; src=&quot;{IMAGE}&quot;&gt;
-        ///&lt;/div&gt;.
+        ///            &lt;td&gt;&lt;a style=&quot;color: white; text-decoration: und [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string popup {
             get {

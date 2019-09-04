@@ -128,10 +128,19 @@
     <None Include="Resources\infinite-scroll.pkgd.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\gallery.html" />
+    <None Include="Resources\moderngallery.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\popup.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagesloaded.pkgd.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\masonry.pkgd.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gallery.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

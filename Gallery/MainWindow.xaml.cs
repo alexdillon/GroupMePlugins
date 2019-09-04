@@ -106,6 +106,14 @@ namespace Gallery
                         this.SendFile(Properties.Resources.jquery_3_4_1_min, context.Response, JavascriptMimeType);
                         break;
 
+                    case "masonry.pkgd.min.js":
+                        this.SendFile(Properties.Resources.masonry_pkgd_min, context.Response, JavascriptMimeType);
+                        break;
+
+                    case "imagesloaded.pkgd.min.js":
+                        this.SendFile(Properties.Resources.imagesloaded_pkgd_min, context.Response, JavascriptMimeType);
+                        break;
+
                     case "gallery.html":
                         this.SendPage(1, context.Response);
                         break;
@@ -154,7 +162,7 @@ namespace Gallery
 
             var pageNumber = friendlyPageNumber - 1;
 
-            var file = Properties.Resources.gallery;
+            var file = Properties.Resources.moderngallery;
             var range = this.MessagesWithAttachments.Skip(pageNumber * this.ImagesPerPage).Take(this.ImagesPerPage);
 
             var images = new StringWriter();
@@ -165,7 +173,7 @@ namespace Gallery
                 if (!string.IsNullOrEmpty(imageUrl))
                 {
                     var entry = $@"<div class=""floatImage"">
-                                    <img src=""{imageUrl}.preview"" onClick=""openModal('{msg.Id}');""/>
+                                    <img src=""{imageUrl}.large"" onClick=""openModal('{msg.Id}');""/>
                                 </div>";
 
                     images.WriteLine(entry);

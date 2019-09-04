@@ -121,11 +121,20 @@
   <data name="gallery" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gallery.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="imagesloaded_pkgd_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagesloaded.pkgd.min.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="infinite_scroll_pkgd_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\infinite-scroll.pkgd.min.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="jquery_3_4_1_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\jquery-3.4.1.min.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="masonry_pkgd_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\masonry.pkgd.min.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="moderngallery" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moderngallery.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="popup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\popup.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
