@@ -19,13 +19,14 @@ namespace Gallery
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(IMessageContainer groupChat, IQueryable<Message> cachedMessages, ICachePluginUIIntegration uiIntegration)
+        public MainWindow(IMessageContainer groupChat, IQueryable<Message> cachedMessages, ICachePluginUIIntegration uiIntegration, bool classicStyle)
         {
             InitializeComponent();
 
             this.GroupChat = groupChat;
             this.CachedMessages = cachedMessages;
             this.UIIntegration = uiIntegration;
+            this.ClassicStyle = classicStyle;
 
             this.MessagesWithAttachments =
                 this.CachedMessages
@@ -66,6 +67,8 @@ namespace Gallery
         private HttpListener HttpListener { get; }
 
         private CancellationTokenSource CancellationTokenSource { get; }
+
+        private bool ClassicStyle { get; }
 
         public void OpenContextView(string id)
         {
@@ -162,7 +165,7 @@ namespace Gallery
 
             var pageNumber = friendlyPageNumber - 1;
 
-            var file = Properties.Resources.moderngallery;
+            var file = this.ClassicStyle ? Properties.Resources.gallery : Properties.Resources.moderngallery;
             var range = this.MessagesWithAttachments.Skip(pageNumber * this.ImagesPerPage).Take(this.ImagesPerPage);
 
             var images = new StringWriter();
@@ -172,8 +175,10 @@ namespace Gallery
                 var imageUrl = this.GetAttachmentContentUrl(msg.Attachments);
                 if (!string.IsNullOrEmpty(imageUrl))
                 {
+                    var size = this.ClassicStyle ? "preview" : "large";
+
                     var entry = $@"<div class=""floatImage"">
-                                    <img src=""{imageUrl}.large"" onClick=""openModal('{msg.Id}');""/>
+                                    <img src=""{imageUrl}.{size}"" onClick=""openModal('{msg.Id}');""/>
                                 </div>";
 
                     images.WriteLine(entry);
