@@ -124,7 +124,8 @@ namespace Gallery
 
                     case "viewImage.html":
                         var msgId = context.Request.QueryString["id"];
-                        this.SendEmbeddedPage(msgId, context.Response);
+                        var attachmentIndex = int.Parse(context.Request.QueryString["index"]);
+                        this.SendEmbeddedPage(msgId, attachmentIndex, context.Response);
                         break;
 
                     default:
@@ -173,17 +174,20 @@ namespace Gallery
 
             foreach (var msg in range)
             {
-                var imageUrl = this.GetAttachmentContentUrl(msg.Attachments);
-                if (!string.IsNullOrEmpty(imageUrl))
+                var imageUrls = this.GetAttachmentContentUrls(msg.Attachments);
+                for (int i = 0; i < imageUrls.Length; i++)
                 {
-                    var size = this.ClassicStyle ? "preview" : "large";
+                    if (!string.IsNullOrEmpty(imageUrls[i]))
+                    {
+                        var size = this.ClassicStyle ? "preview" : "large";
 
-                    var entry = $@"<div class=""floatImage"">
-                                    <img src=""{imageUrl}.{size}"" onClick=""openModal('{msg.Id}');""/>
+                        var entry = $@"<div class=""floatImage"">
+                                    <img src=""{imageUrls[i]}.{size}"" onClick=""openModal('{msg.Id}',{i});""/>
                                 </div>";
 
-                    images.WriteLine(entry);
+                        images.WriteLine(entry);
 
+                    }
                 }
             }
 
@@ -198,7 +202,7 @@ namespace Gallery
             response.Close();
         }
 
-        private void SendEmbeddedPage(string messageId, HttpListenerResponse response)
+        private void SendEmbeddedPage(string messageId, int index, HttpListenerResponse response)
         {
             var file = Properties.Resources.popup;
             var message = this.MessagesWithAttachments.FirstOrDefault(m => m.Id == messageId);
@@ -208,7 +212,7 @@ namespace Gallery
                 return;
             }
 
-            var imageUrl = this.GetAttachmentContentUrl(message.Attachments);
+            var imageUrl = this.GetAttachmentContentUrls(message.Attachments)[index];
             var likersList = new StringWriter();
             try
             {
@@ -257,29 +261,26 @@ namespace Gallery
             response.Close();
         }
 
-        private string GetAttachmentContentUrl(IEnumerable<Attachment> attachments)
+        private string[] GetAttachmentContentUrls(IEnumerable<Attachment> attachments)
         {
-            var imageUrl = string.Empty;
+            var results = new List<string>();
             foreach (var attachment in attachments)
             {
                 if (attachment is ImageAttachment imageAttachment)
                 {
-                    imageUrl = $"{imageAttachment.Url}";
-                    break;
+                    results.Add($"{imageAttachment.Url}");
                 }
                 else if (attachment is LinkedImageAttachment linkedImageAttachment)
                 {
-                    imageUrl = $"{linkedImageAttachment.Url}";
-                    break;
+                    results.Add($"{linkedImageAttachment.Url}");
                 }
                 else if (attachment is VideoAttachment videoAttachment)
                 {
-                    imageUrl = videoAttachment.PreviewUrl;
-                    break;
+                    results.Add(videoAttachment.PreviewUrl);
                 }
             }
 
-            return imageUrl;
+            return results.ToArray();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
