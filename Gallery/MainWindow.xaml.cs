@@ -30,6 +30,7 @@ namespace Gallery
 
             this.MessagesWithAttachments =
                 this.CachedMessages
+                    .AsEnumerable()
                     .Where(m => m.Attachments.Count > 0)
                     .OrderByDescending(m => m.CreatedAtTime);
 
@@ -54,7 +55,7 @@ namespace Gallery
 
         private IQueryable<Message> CachedMessages { get; }
 
-        private IQueryable<Message> MessagesWithAttachments { get; }
+        private IEnumerable<Message> MessagesWithAttachments { get; }
 
         private ICachePluginUIIntegration UIIntegration { get; }
 
