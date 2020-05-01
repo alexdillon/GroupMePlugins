@@ -16,6 +16,7 @@ namespace CommonMessagesPlugin
         {
             var result = new MessageSuggestions();
             result.TextOptions.Add(@"¯\_(ツ)_/¯");
+            result.TextOptions.Add(typedMessage + @" ¯\_(ツ)_/¯");
 
             return Task.FromResult<MessageSuggestions>(result);
         }
