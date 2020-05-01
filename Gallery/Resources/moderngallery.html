@@ -203,9 +203,9 @@
             }
         });
 
-        function openModal(id) {
+        function openModal(id, index) {
             $('#modalBrowser').empty();
-            $('#modalBrowser').load("viewImage.html?id=" + id);
+            $('#modalBrowser').load("viewImage.html?id=" + id + "&index=" + index);
 
             var modal = document.getElementById("myModal");
             modal.style.display = "block";
