@@ -14,6 +14,8 @@ namespace MemeEffectsPlugin
 
         public override string PluginVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
+        public override Version ApiVersion => new Version(2, 0, 0);
+
         public Task<MessageSuggestions> ProvideOptions(string typedMessage)
         {
             var result = new MessageSuggestions();
@@ -21,7 +23,7 @@ namespace MemeEffectsPlugin
             result.TextOptions.Add(this.DoAlternatingSpongebobText(typedMessage, true));
             result.TextOptions.Add(this.DoAlternatingSpongebobText(typedMessage, false));
 
-            return Task.FromResult<MessageSuggestions>(result);
+            return Task.FromResult(result);
         }
 
         private string DoRandomSpongebobText(string text)

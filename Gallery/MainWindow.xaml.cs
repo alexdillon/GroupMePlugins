@@ -19,9 +19,9 @@ namespace Gallery
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(IMessageContainer groupChat, IQueryable<Message> cachedMessages, ICachePluginUIIntegration uiIntegration, bool classicStyle)
+        public MainWindow(IMessageContainer groupChat, IQueryable<Message> cachedMessages, IPluginUIIntegration uiIntegration, bool classicStyle)
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.GroupChat = groupChat;
             this.CachedMessages = cachedMessages;
@@ -57,7 +57,7 @@ namespace Gallery
 
         private IEnumerable<Message> MessagesWithAttachments { get; }
 
-        private ICachePluginUIIntegration UIIntegration { get; }
+        private IPluginUIIntegration UIIntegration { get; }
 
         private ObjectForScriptingHelper ScriptingHelper { get; }
 

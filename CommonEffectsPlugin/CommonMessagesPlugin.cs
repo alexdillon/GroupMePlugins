@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Threading.Tasks;
 using GroupMeClientPlugin.MessageCompose;
 
@@ -12,13 +13,15 @@ namespace CommonMessagesPlugin
 
         public override string PluginVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
+        public override Version ApiVersion => new Version(2, 0, 0);
+
         public Task<MessageSuggestions> ProvideOptions(string typedMessage)
         {
             var result = new MessageSuggestions();
             result.TextOptions.Add(@"¯\_(ツ)_/¯");
             result.TextOptions.Add(typedMessage + @" ¯\_(ツ)_/¯");
 
-            return Task.FromResult<MessageSuggestions>(result);
+            return Task.FromResult(result);
         }
     }
 }
