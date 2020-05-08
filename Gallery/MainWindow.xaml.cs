@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using GroupMeClientApi.Models;
 using GroupMeClientApi.Models.Attachments;
+using GroupMeClientPlugin;
 using GroupMeClientPlugin.GroupChat;
 
 namespace Gallery
@@ -19,17 +20,17 @@ namespace Gallery
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(IMessageContainer groupChat, IQueryable<Message> cachedMessages, IPluginUIIntegration uiIntegration, bool classicStyle)
+        public MainWindow(IMessageContainer groupChat, CacheSession cacheSession, IPluginUIIntegration uiIntegration, bool classicStyle)
         {
             this.InitializeComponent();
 
             this.GroupChat = groupChat;
-            this.CachedMessages = cachedMessages;
+            this.CacheSession = cacheSession;
             this.UIIntegration = uiIntegration;
             this.ClassicStyle = classicStyle;
 
             this.MessagesWithAttachments =
-                this.CachedMessages
+                this.CacheSession.CacheForGroupOrChat
                     .AsEnumerable()
                     .Where(m => m.Attachments.Count > 0)
                     .OrderByDescending(m => m.CreatedAtTime);
@@ -53,7 +54,7 @@ namespace Gallery
 
         private IMessageContainer GroupChat { get; }
 
-        private IQueryable<Message> CachedMessages { get; }
+        private CacheSession CacheSession { get; }
 
         private IEnumerable<Message> MessagesWithAttachments { get; }
 
