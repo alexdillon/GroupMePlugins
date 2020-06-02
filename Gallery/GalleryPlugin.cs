@@ -12,7 +12,7 @@ namespace Gallery
     {
         public string PluginName => this.PluginDisplayName;
 
-        public override string PluginDisplayName => "Image Gallery (Classic)";
+        public override string PluginDisplayName => "Image Gallery (External, Classic)";
 
         public override string PluginVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
